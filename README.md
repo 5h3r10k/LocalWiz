@@ -38,6 +38,19 @@ The embeddings model can be locally run usinng Ollama. The embeddings model in u
 The retriever is responsible for finding relevant documents based on the user query. The retriever is the chatbot environment which, based on the user's query, retrieves the most relevant documents from the knowledge base and generates a response. An LLM is required for this stage, and the specific model being used in this project is Google's `gemma2:9b` through Ollama.
 
 
+## Running the Project
+
+To run the project, follow these steps:
+
+1. Clone the repository to your local machine. It is recommended to clone somewhere local, as the scraping will produce many files and may take up significant disk space.
+2. Install the required dependencies using `pip3 install -r requirements.txt`.
+3. Install Ollama and the required models. The models required are `nomic-embed-text:latest` and `gemma2:9b`. The embeddings model can be downloaded from the Ollama website and run locally. The LLM model can also be downloaded from the Ollama website and run locally. Please refer to the Ollama documentation for more information.
+4. Place the root URl of the website you want to scrape in the isolated `root_url` variable in the `scraper.py` file. Also set the 'allowed_urls' and 'blocked_urls' variables to whitelist and blacklist domain starters respectively. The `allowed_urls` variable must not be empty, or else nothing will be scraped.
+5. Run the scraper using `python3 scraper.py`. This will scrape the website and store the data in a new directory `scraped_pages`.
+6. Run the indexer using `python3 indexer.py`. This will index the documents in the `scraped_pages` directory and store the embeddings in the `db` directory.
+7. Run the retriever using `python3 retriever.py`. This will start the chatbot environment, and you can ask questions based on the knowledge base you have built.
+
+
 ## Ending Notes
 
 This is a prototype of a tool that can answer questions on secure knowledge bases. Secure and efficient answers for sensitive documents such as legal documents, medical records, and more can be provided using this tool. 

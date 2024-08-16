@@ -1,0 +1,9 @@
+langchain
+langchain-community
+chromadb
+requests
+beautifulsoup4
+os
+requests
+urllib
+collections
